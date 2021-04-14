@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,14 +40,20 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
+
+        }
+
         public List<Car> GetCarsBrandId(int BrandId)
         {
-            return _carDal.GetAll(p => p.BrandId == BrandId);
+            return _carDal.GetAll(c => c.BrandId == BrandId);
         }
 
         public List<Car> GetCarsByColorId(int ColorId)
         {
-            return _carDal.GetAll(p => p.ColorId == ColorId);
+            return _carDal.GetAll(c => c.ColorId == ColorId);
         }
 
         public void Update(Car car)
